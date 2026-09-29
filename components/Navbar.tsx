@@ -71,12 +71,13 @@ const navigationItems = [
     {/* ================= LOGO ================= */}
     <a
       href="#home"
+      aria-label="Lahore Girls for Date home"
       className="group flex shrink-0 items-center justify-start"
     >
       <div className="relative flex h-14 w-14 items-center justify-center overflow-hidden transition-all duration-300 group-hover:border-[#c49a52]/60 group-hover:bg-[#c49a52]/15 sm:h-16 sm:w-16">
         <Image
           src="/LOGO.png"
-          alt="Verified call girls in Lahore"
+          alt=""
           width={48}
           height={48}
           className="h-full w-full object-contain p-1"
@@ -123,13 +124,13 @@ const navigationItems = [
 
       {/* CTA */}
       <a
-        href="https://wa.me/923221480953?text=Hi%20I%20want%20to%20chat%20with%20you"
+        href="https://wa.me/923246262735?text=Hi%20I%20want%20to%20chat%20with%20you"
         target="_blank"
         rel="noreferrer"
         className="group inline-flex items-center gap-2 rounded-lg bg-[#c49a52] px-4 py-2 text-xs font-semibold text-[#0a0907] transition-all duration-300 hover:bg-[#d5b46e] hover:shadow-[0_0_25px_rgba(196,154,82,0.15)]"
       >
         <FaWhatsapp className="h-3.5 w-3.5" />
-        0322-1480953
+        0324-6262735
       </a>
     </div>
 
@@ -175,7 +176,7 @@ const navigationItems = [
                 <div className="flex h-9 w-9 items-center justify-center overflow-hidden rounded-lg border border-[#c49a52]/25 bg-[#c49a52]/10">
                   <Image
                     src="/LOGO.png"
-                    alt="Lahore Girls Logo"
+                    alt=""
                     width={28}
                     height={28}
                     className="h-full w-full object-contain p-1"
@@ -274,14 +275,14 @@ const navigationItems = [
             {/* Mobile CTA */}
             <div className="border-t border-white/[0.07] p-5">
               <a
-                href="https://wa.me/923221480953?text=Hi%20I%20want%20to%20chat%20with%20you"
+                href="https://wa.me/923246262735?text=Hi%20I%20want%20to%20chat%20with%20you"
                 target="_blank"
                 rel="noreferrer"
                 onClick={closeMobileMenu}
                 className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#c49a52] px-5 py-3.5 text-sm font-semibold text-[#0a0907] transition-all duration-300 hover:bg-[#d5b46e]"
               >
                 <FaWhatsapp className="h-4 w-4" />
-                0322-1480953
+                0324-6262735
               </a>
             </div>
           </div>

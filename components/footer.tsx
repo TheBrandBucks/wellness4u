@@ -24,7 +24,7 @@ const supportLinks = [
   { label: "Community Standards", href: "#about" },
   { label: "Privacy & Safety", href: "#about" },
   { label: "FAQ", href: "#about" },
-  { label: "Contact Support", href: "https://wa.me/923221480953?text=Hi%20I%20need%20support" },
+  { label: "Contact Support", href: "https://wa.me/923246262735?text=Hi%20I%20need%20support" },
 ];
 
 const locations = [
@@ -50,7 +50,7 @@ export default function Footer() {
               <div className="relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-xl border border-[#c49a52]/25 bg-[#c49a52]/10 transition-all duration-300 group-hover:border-[#c49a52]/50 group-hover:bg-[#c49a52]/15">
                 <Image
                   src="/LOGO.png"
-                  alt="Verified call girls in Lahore"
+                  alt=""
                   width={34}
                   height={34}
                   className="h-full w-full object-contain p-1"
@@ -87,9 +87,9 @@ export default function Footer() {
 
           {/* Directory */}
           <div>
-            <h3 className="text-sm font-medium text-white">
+            <h2 className="text-sm font-medium text-white">
               Directory
-            </h3>
+            </h2>
 
             <ul className="mt-5 space-y-3">
               {directoryLinks.map((link) => (
@@ -109,9 +109,9 @@ export default function Footer() {
 
           {/* Popular locations */}
           <div>
-            <h3 className="text-sm font-medium text-white">
+            <h2 className="text-sm font-medium text-white">
               Popular Locations
-            </h3>
+            </h2>
 
             <ul className="mt-5 space-y-3">
               {locations.map((location) => (
@@ -129,9 +129,9 @@ export default function Footer() {
 
           {/* Support */}
           <div>
-            <h3 className="text-sm font-medium text-white">
+            <h2 className="text-sm font-medium text-white">
               Safety & Assistance
-            </h3>
+            </h2>
 
             <ul className="mt-5 space-y-3">
               {supportLinks.map((link) => (

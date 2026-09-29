@@ -83,7 +83,7 @@ export default function Hero() {
             >
               Escort services in Lahore <br className="hidden sm:inline" />{" "}
               <span className="block bg-gradient-to-r from-[#e6c889] via-[#c49a52] to-[#9f7437] bg-clip-text text-transparent">
-                03221480953
+                03246262735
               </span>
             </motion.h1>
 
@@ -168,8 +168,8 @@ export default function Hero() {
               <div className="relative overflow-hidden rounded-[28px] border border-white/10 bg-[#11110f] p-2 shadow-2xl">
                 <div className="relative aspect-[4/5] overflow-hidden rounded-[22px]">
                   <img
-                    src="/hot-indian-model-girl-png-hd-for-photo-editing-11644404662ujehyc0pgp.png"
-                    alt="Verified call girls in Lahore"
+                    src="/hot-indian.png"
+                    alt="Illustration of a woman in a portrait frame"
                     className="absolute inset-0 h-full w-full object-contain object-center bg-[#171411] grayscale-[0.1] contrast-125"
                   />
 
@@ -203,9 +203,9 @@ export default function Hero() {
                           Curated Community
                         </p>
 
-                        <h3 className="mt-2 text-xl font-medium">
+                        <h2 className="mt-2 text-xl font-medium">
                           Call Girl Services in Lahore
-                        </h3>
+                        </h2>
 
                         <p className="mt-1 text-sm text-white/45">
                           Privacy • Respect • Trust

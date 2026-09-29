@@ -98,11 +98,11 @@ const BlogPage = () => {
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {/* Section Heading */}
           <div className="text-center mb-16">
-            <h2
+            <h1
               className={`text-5xl md:text-5xl font-bold mb-6 gradient-text text-[#c49a52] `}
             >
               Our Latest Insights
-            </h2>
+            </h1>
             <p
               className={`text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed`}
             >
@@ -242,11 +242,11 @@ const BlogPage = () => {
 
                   {/* Card Header */}
                   <CardHeader className={`text-center p-5 space-y-3 flex-grow`}>
-                    <h3
+                    <h2
                       className={`text-xl font-bold text-white group-hover:text-[#c49a52] transition-colors duration-300`}
                     >
                       {post.title}
-                    </h3>
+                    </h2>
                     <p className="text-gray-400 text-sm line-clamp-3 min-h-[60px]">
                       {post.excerpt}
                     </p>

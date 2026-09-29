@@ -1,2 +1,5 @@
-// export const BASE_URL = process.env.NEXT_PUBLIC_PROD_API_URL || process.env.NEXT_PUBLIC_DEV_API_URL;
-export const BASE_URL = process.env.NEXT_PUBLIC_PROD_API_URL || process.env.NEXT_PUBLIC_DEV_API_URL;
+const isDevelopment = process.env.NODE_ENV === 'development';
+
+export const BASE_URL = isDevelopment
+	? process.env.NEXT_PUBLIC_DEV_API_URL || process.env.NEXT_PUBLIC_PROD_API_URL
+	: process.env.NEXT_PUBLIC_PROD_API_URL || process.env.NEXT_PUBLIC_DEV_API_URL;

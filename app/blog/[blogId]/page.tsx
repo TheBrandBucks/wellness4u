@@ -2,6 +2,8 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { BASE_URL } from "@/utils/apiConfig";
+import type { Metadata } from "next";
+import { buildMetadata, getSeoSetting, JsonLd, SITE_URL } from "@/lib/seo";
 interface Blog {
   _id: string;
   title: string;
@@ -16,6 +18,20 @@ interface Blog {
 import { Orbitron } from "next/font/google";
 import { CalendarDays, Clock, User } from "lucide-react";
 import Navbar from "@/components/Navbar";
+
+async function getBlog(blogId: string) {
+  const response = await fetch(`${BASE_URL}/api/v1/blogs/single-blog/${blogId}`, { next: { revalidate: 60 } });
+  if (!response.ok) return null;
+  const result = await response.json();
+  return result.data as Blog;
+}
+
+export async function generateMetadata({ params }: { params: { blogId: string } }): Promise<Metadata> {
+  const blog = await getBlog(params.blogId);
+  if (!blog) return { title: "Blog not found", robots: { index: false, follow: false } };
+  const seo = await getSeoSetting("blog", params.blogId);
+  return buildMetadata(seo, { title: `${blog.title} | WellWisher`, description: blog.excerpt, path: `/blog/${seo?.slug || params.blogId}` });
+}
 const orbitron = Orbitron({
   subsets: ["latin"],
   weight: ["600"], // bold weight
@@ -29,12 +45,10 @@ const orbitrondes = Orbitron({
 export default async function BlogDetailsPage({ params }: { params: { blogId: string } }) {
   const { blogId } = params;
   // API call (backend se data fetch)
-  const res = await fetch(`${BASE_URL}/api/v1/blogs/single-blog/${blogId}`, {
-    cache: "no-store", // hamesha fresh data ke liye
-  });
-  if (!res.ok) return notFound();
-  const data = await res.json();
-  const blog: Blog = await data.data;
+  const blog = await getBlog(blogId);
+  if (!blog) return notFound();
+  const seo = await getSeoSetting("blog", blogId);
+  const blogUrl = seo?.canonicalUrl || `${SITE_URL}/blog/${seo?.slug || blogId}`;
   // console.log("Single blog:", blog)
   return (
     <div className="min-h-screen bg-black">
@@ -115,6 +129,26 @@ export default async function BlogDetailsPage({ params }: { params: { blogId: st
             ))}
         </article>
       </section>
+
+      {seo?.schemaJson ? <JsonLd data={seo.schemaJson} /> : <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": "Article",
+        headline: blog.title,
+        description: blog.excerpt,
+        image: blog.image,
+        datePublished: blog.createdAt,
+        author: { "@type": "Person", name: blog.author },
+        mainEntityOfPage: blogUrl,
+      }} />}
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+          { "@type": "ListItem", position: 2, name: "Blogs", item: `${SITE_URL}/blogs` },
+          { "@type": "ListItem", position: 3, name: blog.title, item: blogUrl },
+        ],
+      }} />
 
 
     </div>

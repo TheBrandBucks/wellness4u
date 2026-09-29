@@ -38,7 +38,7 @@ export default function ProfileCard({ profile }: ProfileCardProps) {
       <div className="relative aspect-[4/5] overflow-hidden">
         <Image
           src={profile.image}
-          alt={`${profile.name} profile`}
+          alt={`${profile.name}, ${profile.profession}`}
           fill
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
           className="object-cover transition-transform duration-700 group-hover:scale-105"
@@ -160,7 +160,7 @@ export default function ProfileCard({ profile }: ProfileCardProps) {
           </div>
 
           <a
-            href="https://wa.me/923221480953?text=Hi%20I%20want%20to%20book%20a%20profile"
+            href="https://wa.me/923246262735?text=Hi%20I%20want%20to%20book%20a%20profile"
             target="_blank"
             rel="noreferrer"
             className="inline-flex items-center gap-2 rounded-lg border border-[#c49a52]/25 bg-[#c49a52]/10 px-4 py-2.5 text-xs font-medium text-[#d8b976] transition-all duration-300 hover:border-[#c49a52]/50 hover:bg-[#c49a52]/15"

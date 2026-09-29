@@ -1,10 +1,7 @@
-'use client';
-
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Counter from '@/components/Counter';
 import { motion } from "framer-motion";
-import { useState } from 'react';
 import {profiles} from '@/data/profile';
 import {
   BadgeCheck,
@@ -21,6 +18,8 @@ import Hero from '@/components/Hero';
 import ProfileCard from '@/components/Profile';
 import Footer from '@/components/footer';
 import { FaWhatsapp } from 'react-icons/fa';
+import ExpandableDescription from '@/components/ExpandableDescription';
+import { getSeoSetting, JsonLd } from '@/lib/seo';
 
 const stats = [
   { value: '15K+', label: 'Visas Processed' },
@@ -166,9 +165,8 @@ const testimonials = [
   { name: 'Yuki Tanaka', from: 'Japan to Germany', text: 'The document wizard was spot on — every item I needed was listed. Zero back-and-forth with the embassy.', stars: 5 },
 ];
 
-export default function HomePage() {
-  const [expanded, setExpanded] = useState(false);
-
+export default async function HomePage() {
+  const seo = await getSeoSetting('page', '/');
   const description =
     'Get top-class Lahore escorts service with hotel room arrangements starting at affordable rates. EscortsinLahore is one of the most trusted Lahore escort agencies offering genuine, transparent, and high-quality companions right at your doorstep. We provide a wide range of stunning and professional escorts who deliver a safe, discreet, and memorable experience. Whether you want a high-profile companion for a romantic evening, social event, or private time, our verified call girls in Lahore are carefully selected for beauty, personality, and professionalism. Why choose our Lahore escorts service? We offer 100% verified and independent escorts, transparent rates, fast doorstep delivery, complete privacy, and 24/7 availability. You can hire your preferred professional escort without any advance payment, and pay only after you meet and confirm satisfaction. At EscortsinLahore, you will find a large selection of beautiful companions including young college girls, high-profile VIP models, and elegant, sophisticated ladies. Every escort is real and independent, and our call girls in Lahore are known for their charm, confidence, and the ability to create a luxurious and enjoyable atmosphere. Our services are available across Lahore with quick delivery, discreet support, and the comfort of a premium, trusted experience.';
 
@@ -176,10 +174,11 @@ export default function HomePage() {
 
   return (
     <div id="home" className="relative min-h-screen bg-slate-50">
+      <JsonLd data={seo?.schemaJson} />
       <Navbar />
 
       <a
-        href="https://wa.me/923221480953?text=Hi%20I%20want%20to%20book%20a%20profile"
+        href="https://wa.me/923246262735?text=Hi%20I%20want%20to%20book%20a%20profile"
         target="_blank"
         rel="noreferrer"
         aria-label="Chat on WhatsApp"
@@ -199,18 +198,7 @@ export default function HomePage() {
               <h2 className="mt-4 max-w-xl text-3xl font-semibold tracking-[-0.04em] text-slate-900 sm:text-4xl lg:text-5xl">
                 Looking for the best Escorts Services in Lahore? 
               </h2>
-              <p className="mt-5 max-w-2xl text-base leading-8 text-slate-600 sm:text-lg">
-                {expanded ? description : preview}
-              </p>
-
-              <button
-                type="button"
-                onClick={() => setExpanded((prev) => !prev)}
-                className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[#b68235] transition hover:text-[#8d5d1a]"
-              >
-                {expanded ? 'Read less' : 'Read more'}
-                <span aria-hidden="true">{expanded ? '−' : '+'}</span>
-              </button>
+              <ExpandableDescription description={description} preview={preview} />
 
               <div className="mt-8 flex flex-wrap gap-3">
                 {[
@@ -278,7 +266,7 @@ export default function HomePage() {
             Meet Verified Community Members
           </h2>
 
-          <p className="mt-4 max-w-2xl text-sm leading-6 text-white/45 sm:text-base">
+          <p className="mt-4 max-w-2xl text-sm leading-6 text-white/70 sm:text-base">
             Discover verified adults across Lahore through a privacy-focused
             and respectful community directory.
           </p>
