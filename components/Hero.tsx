@@ -83,7 +83,7 @@ export default function Hero() {
             >
               Escort services in Lahore <br className="hidden sm:inline" />{" "}
               <span className="block bg-gradient-to-r from-[#e6c889] via-[#c49a52] to-[#9f7437] bg-clip-text text-transparent">
-                03246262735
+                03246262754
               </span>
             </motion.h1>
 

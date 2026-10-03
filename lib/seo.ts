@@ -25,17 +25,32 @@ export interface SeoSetting {
   imageAlt?: string | null;
 }
 
-export async function getSeoSetting(entityType: SeoSetting['entityType'], entityId: string) {
+async function fetchPublicSeo(query: string, fresh = false) {
   try {
-    const response = await fetch(`${BASE_URL}/api/v1/seo/public?entityType=${entityType}&entityId=${encodeURIComponent(entityId)}`, {
-      next: { revalidate: 60 },
-    });
+    const response = await fetch(`${BASE_URL}/api/v1/seo/public?${query}`, fresh
+      ? { cache: 'no-store' }
+      : { next: { revalidate: 60 } });
     if (!response.ok) return null;
     const result = await response.json();
     return (result.data || null) as SeoSetting | null;
   } catch {
     return null;
   }
+}
+
+export async function getSeoSetting(entityType: SeoSetting['entityType'], entityId: string) {
+  return fetchPublicSeo(`entityType=${entityType}&entityId=${encodeURIComponent(entityId)}`);
+}
+
+export async function getSeoSettingBySlug(slug: string) {
+  return fetchPublicSeo(`slug=${encodeURIComponent(slug)}`);
+}
+
+export async function getBlogSeoSetting(requestedId: string, blogEntityId: string) {
+  return (await fetchPublicSeo(`entityType=blog&entityId=${encodeURIComponent(blogEntityId)}`, true))
+    || (requestedId !== blogEntityId
+      ? await fetchPublicSeo(`slug=${encodeURIComponent(requestedId)}`, true)
+      : null);
 }
 
 export function buildMetadata(seo: SeoSetting | null, fallback: { title: string; description: string; path: string }): Metadata {

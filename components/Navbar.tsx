@@ -124,13 +124,13 @@ const navigationItems = [
 
       {/* CTA */}
       <a
-        href="https://wa.me/923246262735?text=Hi%20I%20want%20to%20chat%20with%20you"
+        href="https://wa.me/923246262754?text=Hi%20I%20want%20to%20chat%20with%20you"
         target="_blank"
         rel="noreferrer"
         className="group inline-flex items-center gap-2 rounded-lg bg-[#c49a52] px-4 py-2 text-xs font-semibold text-[#0a0907] transition-all duration-300 hover:bg-[#d5b46e] hover:shadow-[0_0_25px_rgba(196,154,82,0.15)]"
       >
         <FaWhatsapp className="h-3.5 w-3.5" />
-        0324-6262735
+        0324-6262754
       </a>
     </div>
 
@@ -275,14 +275,14 @@ const navigationItems = [
             {/* Mobile CTA */}
             <div className="border-t border-white/[0.07] p-5">
               <a
-                href="https://wa.me/923246262735?text=Hi%20I%20want%20to%20chat%20with%20you"
+                href="https://wa.me/923246262754?text=Hi%20I%20want%20to%20chat%20with%20you"
                 target="_blank"
                 rel="noreferrer"
                 onClick={closeMobileMenu}
                 className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#c49a52] px-5 py-3.5 text-sm font-semibold text-[#0a0907] transition-all duration-300 hover:bg-[#d5b46e]"
               >
                 <FaWhatsapp className="h-4 w-4" />
-                0324-6262735
+                0324-6262754
               </a>
             </div>
           </div>

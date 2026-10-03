@@ -7,11 +7,20 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     metadataBase: new URL(SITE_URL),
     ...buildMetadata(seo, {
-      title: 'WellWisher',
-      description: 'Expert visa consultancy, document checklists and application guidance for destinations worldwide.',
+      title: 'VIP Escort Services in Lahore | Beauty 4u',
+      description: 'Looking for elite and private services in Lahore? Beauty 4u offers 24/7 premium profile choices and discrete bookings.',
       path: '/',
     }),
-    keywords: 'visa consultancy, student visa, work visa, tourist visa, immigration guidance',
+     keywords: [
+      'VIP escort services Lahore',
+      'premium escort services Lahore',
+      'private booking Lahore',
+      'VIP profiles Lahore',
+      'premium companionship Lahore',
+      'exclusive private services Lahore',
+      'Lahore VIP services',
+      'Beauty 4u Lahore',
+    ],
   };
 }
 

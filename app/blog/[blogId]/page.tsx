@@ -3,8 +3,9 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import { BASE_URL } from "@/utils/apiConfig";
 import type { Metadata } from "next";
-import { buildMetadata, getSeoSetting, JsonLd, SITE_URL } from "@/lib/seo";
+import { buildMetadata, getBlogSeoSetting, JsonLd, SITE_URL } from "@/lib/seo";
 interface Blog {
+  id: string;
   _id: string;
   title: string;
   excerpt: string;
@@ -29,7 +30,7 @@ async function getBlog(blogId: string) {
 export async function generateMetadata({ params }: { params: { blogId: string } }): Promise<Metadata> {
   const blog = await getBlog(params.blogId);
   if (!blog) return { title: "Blog not found", robots: { index: false, follow: false } };
-  const seo = await getSeoSetting("blog", params.blogId);
+  const seo = await getBlogSeoSetting(params.blogId, blog.id);
   return buildMetadata(seo, { title: `${blog.title} | WellWisher`, description: blog.excerpt, path: `/blog/${seo?.slug || params.blogId}` });
 }
 const orbitron = Orbitron({
@@ -47,7 +48,7 @@ export default async function BlogDetailsPage({ params }: { params: { blogId: st
   // API call (backend se data fetch)
   const blog = await getBlog(blogId);
   if (!blog) return notFound();
-  const seo = await getSeoSetting("blog", blogId);
+  const seo = await getBlogSeoSetting(blogId, blog.id);
   const blogUrl = seo?.canonicalUrl || `${SITE_URL}/blog/${seo?.slug || blogId}`;
   // console.log("Single blog:", blog)
   return (

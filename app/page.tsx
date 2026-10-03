@@ -178,7 +178,7 @@ export default async function HomePage() {
       <Navbar />
 
       <a
-        href="https://wa.me/923246262735?text=Hi%20I%20want%20to%20book%20a%20profile"
+        href="https://wa.me/923246262754?text=Hi%20I%20want%20to%20book%20a%20profile"
         target="_blank"
         rel="noreferrer"
         aria-label="Chat on WhatsApp"

@@ -24,7 +24,7 @@ const supportLinks = [
   { label: "Community Standards", href: "#about" },
   { label: "Privacy & Safety", href: "#about" },
   { label: "FAQ", href: "#about" },
-  { label: "Contact Support", href: "https://wa.me/923246262735?text=Hi%20I%20need%20support" },
+  { label: "Contact Support", href: "https://wa.me/923246262754?text=Hi%20I%20need%20support" },
 ];
 
 const locations = [
