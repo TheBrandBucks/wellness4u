@@ -177,7 +177,7 @@ function ServiceCard({
 
       {/* Counter */}
       <div className="absolute bottom-5 right-5 z-10 sm:bottom-6 sm:right-6">
-        <span className="rounded-full border border-white/15 bg-black/45 px-3 py-1 text-[11px] font-medium tabular-nums text-white/85 backdrop-blur-md sm:text-xs">
+        <span className="rounded-full border border-white/15 bg-black/45 px-3 py-1 text-[11px] font-medium tabular-nums text-white backdrop-blur-md sm:text-xs">
           {counter}
         </span>
       </div>
