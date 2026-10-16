@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -9,6 +10,43 @@ import {
   ShieldCheck,
   Sparkles,
 } from "lucide-react";
+
+const HERO_IMAGES = [
+  "/WhatsApp1.jpeg",
+  "/WhatsApp2.jpeg",
+  "/WhatsApp3.jpeg",
+  "/WhatsApp4.jpeg",
+  "/WhatsApp5.jpeg",
+  "/WhatsApp6.jpeg",
+  "/WhatsApp7.jpeg",
+];
+
+// Random hero image slideshow — starts deterministic for SSR, shuffles after
+// mount, then cycles through the shuffled order in random steps.
+function useHeroSlideshow() {
+  const [order, setOrder] = useState<number[]>(() => HERO_IMAGES.map((_, i) => i));
+  const [pos, setPos] = useState(0);
+
+  useEffect(() => {
+    const shuffled = HERO_IMAGES.map((_, i) => i);
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    setOrder(shuffled);
+
+    const timer = setInterval(() => {
+      setPos((p) => {
+        // Random step forward (1, 2, or 3) so images appear in random order
+        const step = 1 + Math.floor(Math.random() * 3);
+        return (p + step) % shuffled.length;
+      });
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
+
+  return order[pos];
+}
 
 const trustItems = [
   {
@@ -29,6 +67,8 @@ const trustItems = [
 ];
 
 export default function Hero() {
+  const activeImageIndex = useHeroSlideshow();
+
   return (
     <section className="relative isolate min-h-[760px] overflow-hidden bg-[#090908] text-white sm:min-h-[820px]">
       {/* Background gradients */}
@@ -54,7 +94,7 @@ export default function Hero() {
       </div>
 
       <div className="relative mx-auto flex min-h-[760px] max-w-7xl items-center px-5 pb-16 pt-32 sm:min-h-[820px] sm:px-8 lg:px-12">
-        <div className="grid w-full items-center gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
+        <div className="flex w-full flex-col gap-14 lg:grid lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-16">
           
           {/* LEFT CONTENT */}
           <motion.div
@@ -121,12 +161,12 @@ export default function Hero() {
               </a>
             </motion.div>
 
-            {/* Trust indicators */}
+            {/* Trust indicators (desktop — stays in the left column) */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.55, duration: 0.6 }}
-              className="mt-12 grid grid-cols-1 gap-4 border-t border-white/[0.08] pt-7 sm:grid-cols-3 sm:gap-5"
+              className="mt-12 hidden grid-cols-1 gap-4 border-t border-white/[0.08] pt-7 sm:grid-cols-3 sm:gap-5 lg:grid"
             >
               {trustItems.map((item) => {
                 const Icon = item.icon;
@@ -157,7 +197,7 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.96, x: 25 }}
             animate={{ opacity: 1, scale: 1, x: 0 }}
             transition={{ delay: 0.25, duration: 0.8, ease: "easeOut" }}
-            className="relative flex items-center justify-center lg:flex"
+            className="relative mt-2 flex items-center justify-center lg:mt-0 lg:flex"
           >
             <div className="relative mx-auto w-full max-w-[420px] sm:max-w-[440px] lg:max-w-[420px]">
               
@@ -166,12 +206,18 @@ export default function Hero() {
 
               {/* Main visual */}
               <div className="relative overflow-hidden rounded-[28px] border border-white/10 bg-[#11110f] p-2 shadow-2xl">
-                <div className="relative aspect-[4/5] overflow-hidden rounded-[22px]">
-                  <img
-                    src="/hot-indian.png"
-                    alt="Illustration of a woman in a portrait frame"
-                    className="absolute inset-0 h-full w-full object-contain object-center bg-[#171411] grayscale-[0.1] contrast-125"
-                  />
+                <div className="relative aspect-[4/5] overflow-hidden rounded-[22px] bg-[#171411]">
+                  {HERO_IMAGES.map((src, i) => (
+                    <img
+                      key={src}
+                      src={src}
+                      alt={`Companion portrait ${i + 1}`}
+                      aria-hidden={i !== activeImageIndex}
+                      className={`absolute inset-0 h-full w-full object-cover object-center transition-opacity duration-1000 ease-in-out ${
+                        i === activeImageIndex ? "opacity-100" : "opacity-0"
+                      }`}
+                    />
+                  ))}
 
                   <div className="absolute inset-0 bg-gradient-to-t from-[#090908]/85 via-[#090908]/15 to-[#090908]/10" />
 
@@ -187,13 +233,13 @@ export default function Hero() {
                   </div>
 
                   {/* Center icon */}
-                  <div className="absolute inset-0 flex items-center justify-center">
+                  {/* <div className="absolute inset-0 flex items-center justify-center">
                     <div className="flex h-32 w-32 items-center justify-center rounded-full border border-[#c49a52]/20 bg-[#c49a52]/[0.05] shadow-[0_0_80px_rgba(196,154,82,0.1)]">
                       <div className="flex h-20 w-20 items-center justify-center rounded-full border border-[#c49a52]/30 bg-[#c49a52]/10">
                         <Sparkles className="h-8 w-8 text-[#d5b46e]" />
                       </div>
                     </div>
-                  </div>
+                  </div> */}
 
                   {/* Bottom information card */}
                   <div className="absolute bottom-5 left-5 right-5 rounded-2xl border border-white/10 bg-black/45 p-5 backdrop-blur-xl">
@@ -268,6 +314,36 @@ export default function Hero() {
                 </div>
               </motion.div>
             </div>
+          </motion.div>
+
+          {/* Trust indicators (mobile/tablet — below the image card) */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.55, duration: 0.6 }}
+            className="grid grid-cols-1 gap-4 border-t border-white/[0.08] pt-7 sm:grid-cols-3 sm:gap-5 lg:hidden"
+          >
+            {trustItems.map((item) => {
+              const Icon = item.icon;
+
+              return (
+                <div key={item.title} className="flex items-start gap-3">
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#c49a52]/20 bg-[#c49a52]/[0.07]">
+                    <Icon className="h-4 w-4 text-[#d1ad68]" />
+                  </div>
+
+                  <div>
+                    <p className="text-sm font-medium text-white/90">
+                      {item.title}
+                    </p>
+
+                    <p className="mt-1 text-xs leading-5 text-white/40">
+                      {item.description}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
           </motion.div>
         </div>
       </div>

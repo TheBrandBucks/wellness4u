@@ -17,6 +17,8 @@ import {
 import Hero from '@/components/Hero';
 import ProfileCard from '@/components/Profile';
 import Footer from '@/components/footer';
+import ServiceAreas from '@/components/ServiceAreas';
+import OurServices from '@/components/OurServices';
 import { FaWhatsapp } from 'react-icons/fa';
 import ExpandableDescription from '@/components/ExpandableDescription';
 import { getSeoSetting, JsonLd } from '@/lib/seo';
@@ -190,7 +192,7 @@ export default async function HomePage() {
       {/* Hero */}
       <Hero />
 
-      <section id="about" className="bg-white py-16 sm:py-20 lg:py-24">
+      {/* <section id="about" className="bg-white py-16 sm:py-20 lg:py-24">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
           <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
             <div>
@@ -249,7 +251,7 @@ export default async function HomePage() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
 {/* Profile */}
    <section
@@ -280,13 +282,11 @@ export default async function HomePage() {
       </div>
     </section>
 
+      {/* Our Services */}
+      <OurServices />
 
-  
-
-   
-    
-
-  
+      {/* Service Areas */}
+      <ServiceAreas />
 
       {/* Footer */}
 <Footer/>
