@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { ChevronDown, HelpCircle } from 'lucide-react';
 import Navbar from '@/components/Navbar';
+import Footer from '@/components/footer';
 import { BASE_URL } from '@/utils/apiConfig';
 
 interface Faq {
@@ -130,6 +131,7 @@ export default function FaqsPage() {
           )}
         </div>
       </main>
+      <Footer />
     </div>
   );
 }

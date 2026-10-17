@@ -2,7 +2,6 @@ import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Counter from '@/components/Counter';
 import { motion } from "framer-motion";
-import {profiles} from '@/data/profile';
 import {
   BadgeCheck,
   LockKeyhole,
@@ -15,11 +14,11 @@ import {
   ArrowRight, Briefcase, BookOpen, Plane
 } from 'lucide-react';
 import Hero from '@/components/Hero';
-import ProfileCard from '@/components/Profile';
 import Footer from '@/components/footer';
 import ServiceAreas from '@/components/ServiceAreas';
 import OurServices from '@/components/OurServices';
-import { FaWhatsapp } from 'react-icons/fa';
+import ProfilesSection from '@/components/ProfilesSection';
+import WhatsAppFloat from '@/components/WhatsAppFloat';
 import ExpandableDescription from '@/components/ExpandableDescription';
 import { getSeoSetting, JsonLd } from '@/lib/seo';
 
@@ -179,15 +178,7 @@ export default async function HomePage() {
       <JsonLd data={seo?.schemaJson} />
       <Navbar />
 
-      <a
-        href="https://wa.me/923246262754?text=Hi%20I%20want%20to%20book%20a%20profile"
-        target="_blank"
-        rel="noreferrer"
-        aria-label="Chat on WhatsApp"
-        className="fixed bottom-6 right-6 z-[99999] flex h-20 w-20 items-center justify-center rounded-full border border-[#c49a52]/30 bg-[#25D366] text-white shadow-[0_10px_30px_rgba(37,211,102,0.4)] transition-all duration-300 hover:scale-105 hover:shadow-[0_15px_35px_rgba(37,211,102,0.5)]"
-      >
-        <FaWhatsapp className="h-10 w-10 text-white" />
-      </a>
+      <WhatsAppFloat />
 
       {/* Hero */}
       <Hero />
@@ -253,34 +244,8 @@ export default async function HomePage() {
         </div>
       </section> */}
 
-{/* Profile */}
-   <section
-      id="profiles"
-      className="bg-[#090908] px-5 py-20 sm:px-8 lg:px-12"
-    >
-      <div className="mx-auto max-w-7xl">
-        <div className="mb-10">
-          <p className="text-xs font-medium uppercase tracking-[0.25em] text-[#c49a52]">
-            Curated Directory
-          </p>
-
-          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-            Meet Verified Community Members
-          </h2>
-
-          <p className="mt-4 max-w-2xl text-sm leading-6 text-white/70 sm:text-base">
-            Discover verified adults across Lahore through a privacy-focused
-            and respectful community directory.
-          </p>
-        </div>
-
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {profiles.map((profile) => (
-            <ProfileCard key={profile.id} profile={profile} />
-          ))}
-        </div>
-      </div>
-    </section>
+      {/* Profile */}
+      <ProfilesSection />
 
       {/* Our Services */}
       <OurServices />

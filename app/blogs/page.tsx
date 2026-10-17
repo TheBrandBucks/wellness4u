@@ -21,6 +21,7 @@ import { BASE_URL } from '@/utils/apiConfig';
 
 import { motion } from "framer-motion";
 import Navbar from '@/components/Navbar';
+import Footer from '@/components/footer';
 interface BlogPost {
   id: string;
   title: string;
@@ -288,8 +289,7 @@ const BlogPage = () => {
         </div>
       </section>
 
-
-
+      <Footer />
     </div>
   );
 };

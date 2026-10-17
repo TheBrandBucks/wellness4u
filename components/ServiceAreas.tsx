@@ -114,9 +114,9 @@ export default function ServiceAreas() {
                 >
                   <Image
                     src={area.image}
-                    alt={`${area.name}, ${area.city}`}
+                    alt={area.imageAlt}
                     fill
-                    priority
+                    priority={index === 0}
                     sizes="(max-width: 768px) 100vw, (max-width: 1280px) 90vw, 1152px"
                     className={`object-cover transition-transform ease-out [transition-duration:1400ms] ${
                       isActive ? "scale-105" : "scale-100"
@@ -127,16 +127,36 @@ export default function ServiceAreas() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/10" />
                   <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/80 to-transparent" />
 
+                  {/* Photo credit (required by the image's Creative Commons licence) */}
+                  <a
+                    href={area.imageCredit.sourceUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    tabIndex={isActive ? 0 : -1}
+                    className="absolute right-4 top-4 z-10 max-w-[38%] truncate rounded-full bg-black/40 px-2.5 py-1 text-[10px] text-white/60 backdrop-blur-sm transition-colors hover:text-white sm:right-6 sm:top-6 sm:max-w-[45%]"
+                  >
+                    Photo: {area.imageCredit.author} · {area.imageCredit.license}
+                  </a>
+
                   {/* Location badge */}
                   <div
                     className={`absolute left-5 top-5 transition-all delay-150 duration-700 ease-out sm:left-7 sm:top-7 ${
                       isActive ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"
                     }`}
                   >
-                    <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/45 px-4 py-2 text-xs font-medium text-white backdrop-blur-md sm:text-sm">
-                      <MapPin className="h-4 w-4 text-[#E9C46A]" />
+                    <a
+                      href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                        `${area.name}, ${area.city}, Pakistan`
+                      )}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      tabIndex={isActive ? 0 : -1}
+                      aria-label={`Open ${area.name}, ${area.city} in Google Maps (opens in a new tab)`}
+                      className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/45 px-4 py-2 text-xs font-medium text-white backdrop-blur-md transition-colors hover:border-[#E9C46A]/60 hover:bg-black/65 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E9C46A] sm:text-sm"
+                    >
+                      <MapPin className="h-4 w-4 text-[#E9C46A]" aria-hidden="true" />
                       {area.name}, {area.city}
-                    </span>
+                    </a>
                   </div>
 
                   {/* Bottom content */}

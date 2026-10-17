@@ -13,6 +13,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
+import { navigationItems } from "@/data/navigation";
 
 
 export default function Navbar() {
@@ -31,16 +32,6 @@ export default function Navbar() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
-const navigationItems = [
-  { label: "Home", href: "/" },
-  // { label: "About", href: "/about" },
-  // { label: "Plans", href: "/plans" },
-  // { label: "Services", href: "/services" },
-  // { label: "Case Studies", href: "/case-studies" },
-  { label: "Blogs", href: "/blogs" },
-  { label: "Faqs", href: "/faqs" },
-];
 
   useEffect(() => {
     if (isMobileOpen) {
@@ -70,7 +61,7 @@ const navigationItems = [
   <div className="mx-auto flex h-[76px] max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
     {/* ================= LOGO ================= */}
     <a
-      href="#home"
+      href="/"
       aria-label="Lahore Girls for Date home"
       className="group flex shrink-0 items-center justify-start"
     >
@@ -93,13 +84,13 @@ const navigationItems = [
     </div>
 
     {/* ================= DESKTOP NAV & ACTIONS ================= */}
-    <div className="hidden shrink-0 items-center gap-4 lg:flex">
+    <div className="hidden shrink-0 items-center gap-3 xl:flex">
       <nav className="flex items-center gap-1">
         {navigationItems.map((link, index) => (
           <a
             key={link.label}
             href={link.href}
-            className={`relative rounded-lg px-3 py-2 text-[13px] font-medium transition-all duration-300 ${
+            className={`relative whitespace-nowrap rounded-lg px-2.5 py-2 text-[13px] font-medium transition-all duration-300 ${
               pathname === link.href
                 ? "text-white"
                 : "text-white/60 hover:bg-white/[0.035] hover:text-white"
@@ -116,7 +107,7 @@ const navigationItems = [
       {/* Location */}
       <button
         type="button"
-        className="flex items-center gap-1.5 rounded-lg border border-white/[0.07] bg-white/[0.025] px-3 py-2 text-xs text-white transition-all duration-300 hover:border-[#c49a52]/25 hover:text-white/80"
+        className="hidden items-center gap-1.5 rounded-lg border border-white/[0.07] bg-white/[0.025] px-3 py-2 text-xs text-white transition-all duration-300 hover:border-[#c49a52]/25 hover:text-white/80 2xl:flex"
       >
         <MapPin className="h-3.5 w-3.5 text-[#c49a52]" />
         Lahore
@@ -135,7 +126,7 @@ const navigationItems = [
     </div>
 
     {/* ================= MOBILE ACTIONS ================= */}
-    <div className="flex shrink-0 items-center gap-2 lg:hidden">
+    <div className="flex shrink-0 items-center gap-2 xl:hidden">
       <button
         type="button"
         aria-label={isMobileOpen ? "Close menu" : "Open menu"}
@@ -151,7 +142,7 @@ const navigationItems = [
 
       {/* ================= MOBILE MENU ================= */}
       <div
-        className={`fixed inset-0 z-40 lg:hidden ${
+        className={`fixed inset-0 z-40 xl:hidden ${
           isMobileOpen ? "pointer-events-auto" : "pointer-events-none"
         }`}
       >

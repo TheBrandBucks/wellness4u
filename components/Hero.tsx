@@ -153,7 +153,7 @@ export default function Hero() {
               </a>
 
               <a
-                href="#wellness"
+                href="/services"
                 className="inline-flex h-13 items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/[0.035] px-6 font-medium text-white/85 backdrop-blur-md transition-all duration-300 hover:border-[#c49a52]/30 hover:bg-white/[0.06]"
               >
                 <Sparkles className="h-4 w-4 text-[#d0aa62]" />

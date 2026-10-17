@@ -13,17 +13,11 @@ import {
 } from "lucide-react";
 
 
-const directoryLinks = [
-  { label: "Verified Profiles", href: "#profiles" },
-  { label: "About Us", href: "#about" },
-  { label: "Wellness", href: "#about" },
-  { label: "Safety & Compliance", href: "#about" },
-];
+import { navigationItems } from "@/data/navigation";
 
 const supportLinks = [
-  { label: "Community Standards", href: "#about" },
-  { label: "Privacy & Safety", href: "#about" },
-  { label: "FAQ", href: "#about" },
+  { label: "FAQ", href: "/faqs" },
+  { label: "Blogs", href: "/blogs" },
   { label: "Contact Support", href: "https://wa.me/923246262754?text=Hi%20I%20need%20support" },
 ];
 
@@ -46,7 +40,7 @@ export default function Footer() {
         <div className="grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr] lg:gap-10 lg:py-20">
           {/* Brand */}
           <div className="max-w-sm">
-            <a href="#home" className="group inline-flex items-center gap-3">
+            <a href="/" className="group inline-flex items-center gap-3">
               <div className="relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-xl border border-[#c49a52]/25 bg-[#c49a52]/10 transition-all duration-300 group-hover:border-[#c49a52]/50 group-hover:bg-[#c49a52]/15">
                 <Image
                   src="/LOGO.png"
@@ -85,14 +79,14 @@ export default function Footer() {
         
           </div>
 
-          {/* Directory */}
+          {/* Pages */}
           <div>
             <h2 className="text-sm font-medium text-white">
-              Directory
+              Pages
             </h2>
 
             <ul className="mt-5 space-y-3">
-              {directoryLinks.map((link) => (
+              {navigationItems.map((link) => (
                 <li key={link.label}>
                   <a
                     href={link.href}
@@ -117,7 +111,7 @@ export default function Footer() {
               {locations.map((location) => (
                 <li key={location}>
                   <a
-                    href="#profiles"
+                    href="/service-areas"
                     className="text-sm text-white/40 transition-colors duration-200 hover:text-[#d5b46e]"
                   >
                     {location}
@@ -190,23 +184,6 @@ export default function Footer() {
               <Heart className="h-3 w-3 fill-[#c49a52] text-[#c49a52]" />
               for a safer community
             </p>
-          </div>
-
-          {/* Legal */}
-          <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
-            <a
-              href="#about"
-              className="text-xs text-white/30 transition-colors hover:text-white/65"
-            >
-              Terms & Safety
-            </a>
-
-            <a
-              href="#profiles"
-              className="text-xs text-white/30 transition-colors hover:text-white/65"
-            >
-              Privacy Policy
-            </a>
           </div>
         </div>
 

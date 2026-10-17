@@ -22,15 +22,21 @@ async function getItems<T extends ContentItem>(path: string) {
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [blogs, homeSeo, blogsSeo, faqsSeo] = await Promise.all([
+  const [blogs, homeSeo, blogsSeo, faqsSeo, profilesSeo, servicesSeo, serviceAreasSeo] = await Promise.all([
     getItems<ContentItem>('/api/v1/blogs/blogs-list'),
     getSeoSetting('page', '/'),
     getSeoSetting('page', '/blogs'),
     getSeoSetting('page', '/faqs'),
+    getSeoSetting('page', '/profiles'),
+    getSeoSetting('page', '/services'),
+    getSeoSetting('page', '/service-areas'),
   ]);
 
   const staticPages = [
     { path: '/', seo: homeSeo, changeFrequency: 'weekly' as const, priority: 1 },
+    { path: '/profiles', seo: profilesSeo, changeFrequency: 'weekly' as const, priority: 0.9 },
+    { path: '/services', seo: servicesSeo, changeFrequency: 'weekly' as const, priority: 0.9 },
+    { path: '/service-areas', seo: serviceAreasSeo, changeFrequency: 'weekly' as const, priority: 0.9 },
     { path: '/blogs', seo: blogsSeo, changeFrequency: 'daily' as const, priority: 0.8 },
     { path: '/faqs', seo: faqsSeo, changeFrequency: 'weekly' as const, priority: 0.7 },
   ].flatMap(({ path, seo, changeFrequency, priority }) => {

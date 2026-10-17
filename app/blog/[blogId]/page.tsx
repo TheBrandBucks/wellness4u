@@ -19,6 +19,7 @@ interface Blog {
 import { Orbitron } from "next/font/google";
 import { CalendarDays, Clock, User } from "lucide-react";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/footer";
 
 async function getBlog(blogId: string) {
   const response = await fetch(`${BASE_URL}/api/v1/blogs/single-blog/${blogId}`, { next: { revalidate: 60 } });
@@ -151,7 +152,7 @@ export default async function BlogDetailsPage({ params }: { params: { blogId: st
         ],
       }} />
 
-
+      <Footer />
     </div>
 
 

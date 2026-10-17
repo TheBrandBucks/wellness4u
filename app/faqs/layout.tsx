@@ -4,8 +4,8 @@ import { buildMetadata, getSeoSetting, JsonLd, SITE_URL } from '@/lib/seo';
 export async function generateMetadata(): Promise<Metadata> {
   const seo = await getSeoSetting('page', '/faqs');
   return buildMetadata(seo, {
-    title: 'Frequently Asked Questions | WellWisher',
-    description: 'Find clear answers about WellWisher visa services, documents, process and support.',
+    title: 'FAQs | VIP Escort Services in Lahore | Beauty 4U',
+    description: 'Find clear answers about Beauty 4U VIP escort services in Lahore, booking process, privacy, safety, night services, verified profiles and discreet experiences.',
     path: '/faqs',
   });
 }
