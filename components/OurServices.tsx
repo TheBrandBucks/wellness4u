@@ -24,13 +24,26 @@ function ServiceCard({
 }) {
   const total = services.length;
   const [contentVisible, setContentVisible] = useState(true);
+  const [imageIndex, setImageIndex] = useState(0);
+  const activeImageCount = 1 + (active.gallery?.length ?? 0);
 
   // Re-trigger the staggered slide-up content animation whenever the slide changes
   useEffect(() => {
     setContentVisible(false);
+    setImageIndex(0);
     const timer = setTimeout(() => setContentVisible(true), 40);
     return () => clearTimeout(timer);
   }, [activeIndex]);
+
+  // Rotate through the active service's gallery images, if it has any
+  useEffect(() => {
+    if (activeImageCount < 2) return;
+    const timer = setInterval(
+      () => setImageIndex((i) => (i + 1) % activeImageCount),
+      2000
+    );
+    return () => clearInterval(timer);
+  }, [activeIndex, activeImageCount]);
 
   const whatsappHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
     `Hi, I would like to inquire about ${active.title}.`
@@ -66,6 +79,8 @@ function ServiceCard({
       {/* Background slides (stacked crossfade) */}
       {services.map((s, i) => {
         const isActive = i === activeIndex;
+        const images = [s.image, ...(s.gallery ?? [])];
+        const shownImage = isActive ? imageIndex % images.length : 0;
         return (
           <div
             key={s.id}
@@ -74,16 +89,19 @@ function ServiceCard({
               isActive ? "opacity-100" : "pointer-events-none opacity-0"
             }`}
           >
-            <Image
-              src={s.image}
-              alt={s.title}
-              fill
-              priority
-              sizes="(max-width: 768px) 100vw, (max-width: 1280px) 90vw, 1088px"
-              className={`object-cover object-[70%_center] transition-transform ease-out [transition-duration:1400ms] ${
-                isActive ? "scale-105" : "scale-100"
-              }`}
-            />
+            {images.map((src, imgIdx) => (
+              <Image
+                key={src}
+                src={src}
+                alt={imgIdx === 0 ? s.title : `${s.title} ${imgIdx + 1}`}
+                fill
+                priority={imgIdx === 0}
+                sizes="(max-width: 768px) 100vw, (max-width: 1280px) 90vw, 1088px"
+                className={`object-cover object-[70%_center] transition-[opacity,transform] ease-out [transition-duration:1400ms] ${
+                  imgIdx === shownImage ? "opacity-100" : "opacity-0"
+                } ${isActive ? "scale-105" : "scale-100"}`}
+              />
+            ))}
           </div>
         );
       })}

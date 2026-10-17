@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import SectionPageShell from '@/components/SectionPageShell';
 import OurServices from '@/components/OurServices';
+import ServiceAreas from '@/components/ServiceAreas';
 import { buildMetadata, getSeoSetting, JsonLd, SITE_URL } from '@/lib/seo';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -17,6 +18,7 @@ export default async function ServicesPage() {
   return (
     <SectionPageShell>
       <OurServices />
+      <ServiceAreas />
       <JsonLd data={seo?.schemaJson} />
       <JsonLd data={{
         '@context': 'https://schema.org',

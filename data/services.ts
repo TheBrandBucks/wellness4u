@@ -6,24 +6,19 @@ export interface Service {
   highlight: string;
   description: string;
   image: string;
+  /** Extra images that rotate with `image` while this service is on screen */
+  gallery?: string[];
 }
 
 export const services: Service[] = [
   {
-    id: 'night-services',
-    badge: 'PREMIUM',
-    title: 'Night Services',
-    highlight: 'Services',
-    description: 'Experience exclusive night services with complete privacy and comfort.',
-    image: '/Night-Service.webp',
-  },
-  {
     id: 'girls-in-lahore',
     badge: 'LAHORE',
-    title: 'Girls in Lahore',
+    title: 'Escort Girls in Lahore',
     highlight: 'Lahore',
     description: 'Beautiful and charming girls available in Lahore for your special moments.',
     image: '/Girls-in-lahore.webp',
+    gallery: ['/G2.webp', '/G5.webp', '/G6.webp'],
   },
   {
     id: 'party-dance',
@@ -32,5 +27,6 @@ export const services: Service[] = [
     highlight: 'Dance',
     description: 'Enjoy private dance parties with gorgeous girls and a premium experience.',
     image: '/party.webp',
+    gallery: ['/p1.jpg', '/p2.jpg', '/p3.jpg'],
   },
 ];
