@@ -5,7 +5,7 @@ export const profiles: Profile[] = [
 
     {
     id: "model-1",
-    name: "Model 1",
+    name: "Mahnoor Khan",
     age: 25,
     profession: "Lifestyle Consultant",
     location: "Gulberg III, Lahore",
@@ -19,7 +19,7 @@ export const profiles: Profile[] = [
   },
   {
     id: "model-2",
-    name: "Model 2",
+    name: "Eshal Malik",
     age: 27,
     profession: "Fashion Consultant",
     location: "DHA Phase 5, Lahore",
@@ -33,7 +33,7 @@ export const profiles: Profile[] = [
   },
   {
     id: "model-3",
-    name: "Model 3",
+    name: "Hoorain Ahmed",
     age: 26,
     profession: "Creative Professional",
     location: "Johar Town, Lahore",
@@ -47,7 +47,7 @@ export const profiles: Profile[] = [
   },
   {
     id: "model-4",
-    name: "Model 4",
+    name: "Natasha Qureshi",
     age: 28,
     profession: "Events Consultant",
     location: "Model Town, Lahore",
@@ -89,7 +89,7 @@ export const profiles: Profile[] = [
   },
   {
     id: "3",
-    name: "Profile 3",
+    name: "Minahil Tariq",
     age: 25,
     profession: "Graphic Designer",
     location: "Johar Town, Lahore",
@@ -103,7 +103,7 @@ export const profiles: Profile[] = [
   },
   {
     id: "5",
-    name: "Profile 5",
+    name: "Laiba Sheikh",
     age: 24,
     profession: "Photographer",
     location: "Model Town, Lahore",
@@ -117,7 +117,7 @@ export const profiles: Profile[] = [
   },
   {
     id: "6",
-    name: "Profile 6",
+    name: "Anaya Butt",
     age: 29,
     profession: "Marketing Consultant",
     location: "Gulberg II, Lahore",
@@ -131,7 +131,7 @@ export const profiles: Profile[] = [
   },
   {
     id: "7",
-    name: "Profile 7",
+    name: "Sana Javaid",
     age: 26,
     profession: "Content Creator",
     location: "DHA Phase 4, Lahore",
