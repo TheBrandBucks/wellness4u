@@ -2,10 +2,17 @@
 
 import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
-import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import { services, type Service } from "@/data/services";
 import { WHATSAPP_NUMBER } from "@/data/serviceAreas";
+
+const serviceKeywords = [
+  "LAHORE ESCORTS",
+  "ESCORTS IN LAHORE",
+  "CALL GIRLS IN LAHORE",
+  "LAHORE CALL GIRLS",
+];
 
 function ServiceCard({
   service,
@@ -74,7 +81,7 @@ function ServiceCard({
       onMouseOut={() => onHoverChange(false)}
       onFocus={() => onHoverChange(true)}
       onBlur={() => onHoverChange(false)}
-      className="group relative h-[300px] overflow-hidden rounded-3xl border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.45)] transition-shadow duration-300 hover:shadow-[0_24px_70px_rgba(0,0,0,0.55)] sm:h-[260px]"
+      className="group relative h-[390px] overflow-hidden rounded-3xl border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.45)] transition-shadow duration-300 hover:shadow-[0_24px_70px_rgba(0,0,0,0.55)] sm:h-[340px]"
     >
       {/* Background slides (stacked crossfade) */}
       {services.map((s, i) => {
@@ -137,6 +144,19 @@ function ServiceCard({
             {active.description}
           </p>
 
+          {active.id === "girls-in-lahore" && (
+            <div className="mt-3 grid max-w-md grid-cols-2 gap-2">
+              {serviceKeywords.map((keyword) => (
+                <span
+                  key={keyword}
+                  className="rounded-md border border-white/10 bg-black/35 px-2 py-1.5 text-[9px] font-medium uppercase leading-4 tracking-[0.08em] text-white/70 backdrop-blur-sm"
+                >
+                  {keyword}
+                </span>
+              ))}
+            </div>
+          )}
+
           {/* WhatsApp CTA */}
           <div className="mt-4">
             <a
@@ -174,24 +194,6 @@ function ServiceCard({
           </div>
         </div>
       </div>
-
-      {/* Prev / Next arrows */}
-      <button
-        type="button"
-        onClick={() => onStep(-1)}
-        aria-label={`Previous service (currently ${active.title})`}
-        className="absolute left-3 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-black/45 text-white backdrop-blur-md transition-all duration-300 hover:border-[#E8C16A]/60 hover:text-[#E8C16A] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E8C16A] active:scale-95 sm:left-4 sm:h-10 sm:w-10"
-      >
-        <ChevronLeft className="h-5 w-5" aria-hidden="true" />
-      </button>
-      <button
-        type="button"
-        onClick={() => onStep(1)}
-        aria-label={`Next service (currently ${active.title})`}
-        className="absolute right-3 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-black/45 text-white backdrop-blur-md transition-all duration-300 hover:border-[#E8C16A]/60 hover:text-[#E8C16A] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E8C16A] active:scale-95 sm:right-4 sm:h-10 sm:w-10"
-      >
-        <ChevronRight className="h-5 w-5" aria-hidden="true" />
-      </button>
 
       {/* Counter */}
       <div className="absolute bottom-5 right-5 z-10 sm:bottom-6 sm:right-6">

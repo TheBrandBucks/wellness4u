@@ -66,6 +66,13 @@ const trustItems = [
   },
 ];
 
+const heroKeywords = [
+  "LAHORE ESCORTS",
+  "ESCORTS IN LAHORE",
+  "CALL GIRLS IN LAHORE",
+  "LAHORE CALL GIRLS",
+];
+
 export default function Hero() {
   const activeImageIndex = useHeroSlideshow();
 
@@ -256,6 +263,17 @@ export default function Hero() {
                         <p className="mt-1 text-sm text-white/45">
                           Privacy • Respect • Trust
                         </p>
+
+                        <div className="mt-4 grid grid-cols-2 gap-2">
+                          {heroKeywords.map((keyword) => (
+                            <span
+                              key={keyword}
+                              className="rounded-md border border-white/10 bg-white/[0.04] px-2 py-2 text-[9px] font-medium uppercase leading-4 tracking-[0.08em] text-white/65"
+                            >
+                              {keyword}
+                            </span>
+                          ))}
+                        </div>
                       </div>
 
                       <div className="flex h-10 w-10 items-center justify-center rounded-full border border-[#c49a52]/20 bg-[#c49a52]/10">
