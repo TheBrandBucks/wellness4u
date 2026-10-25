@@ -40,20 +40,20 @@ export default function RootLayout({
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-M65X7P7K');`,
+})(window,document,'script','dataLayer','GTM-NN9VVR56');`,
           }}
         />
 
       </head>
       <body>
-        <noscript>
-    <iframe
-      src="https://www.googletagmanager.com/ns.html?id=GTM-M65X7P7K"
-      height="0"
-      width="0"
-      style={{ display: 'none', visibility: 'hidden' }}
-    />
-  </noscript>
+  <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-NN9VVR56"
+            height="0"
+            width="0"
+            style={{ display: 'none', visibility: 'hidden' }}
+          />
+        </noscript>
         
         {children}</body>
     </html>
