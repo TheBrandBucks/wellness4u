@@ -2,6 +2,63 @@ import type { Profile } from "@/components/Profile";
 
 
 export const profiles: Profile[] = [
+
+    {
+    id: "model-1",
+    name: "Model 1",
+    age: 25,
+    profession: "Lifestyle Consultant",
+    location: "Gulberg III, Lahore",
+    image: "/Model1.jpeg",
+    description:
+      "Polished and personable, with interests in fashion, travel and local culture.",
+    interests: ["Fashion", "Travel", "Culture"],
+    rating: 4.8,
+    verified: true,
+    available: true,
+  },
+  {
+    id: "model-2",
+    name: "Model 2",
+    age: 27,
+    profession: "Fashion Consultant",
+    location: "DHA Phase 5, Lahore",
+    image: "/Model2.jpeg",
+    description:
+      "Confident and creative, with a passion for style, photography and dining.",
+    interests: ["Style", "Photography", "Dining"],
+    rating: 4.9,
+    verified: true,
+    available: true,
+  },
+  {
+    id: "model-3",
+    name: "Model 3",
+    age: 26,
+    profession: "Creative Professional",
+    location: "Johar Town, Lahore",
+    image: "/Model3.jpeg",
+    description:
+      "Warm and engaging, with interests in art, music and memorable experiences.",
+    interests: ["Art", "Music", "Travel"],
+    rating: 4.7,
+    verified: true,
+    available: true,
+  },
+  {
+    id: "model-4",
+    name: "Model 4",
+    age: 28,
+    profession: "Events Consultant",
+    location: "Model Town, Lahore",
+    image: "/Model4.jpeg",
+    description:
+      "Elegant and professional, with interests in events, culture and photography.",
+    interests: ["Events", "Culture", "Photography"],
+    rating: 4.8,
+    verified: true,
+    available: true,
+  },
   {
     id: "1",
     name: "Zoya",
@@ -86,4 +143,5 @@ export const profiles: Profile[] = [
     verified: true,
     available: true,
   },
+
 ];

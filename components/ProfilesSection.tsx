@@ -7,16 +7,15 @@ export default function ProfilesSection() {
       <div className="mx-auto max-w-7xl">
         <div className="mb-10">
           <p className="text-xs font-medium uppercase tracking-[0.25em] text-[#c49a52]">
-            Curated Directory
+            Models
           </p>
 
           <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-            Meet Verified Community Members
+            Meet Our Stunning Lahore Escorts
           </h2>
 
           <p className="mt-4 max-w-2xl text-sm leading-6 text-white/70 sm:text-base">
-            Discover verified adults across Lahore through a privacy-focused
-            and respectful community directory.
+            Checkout our selection of Lahore escorts in our exclusive Models Gallery. every of our Lahore call girls is chosen for their beauty, charm, & professionalism, offering a unique blend of elegance and excitement.
           </p>
         </div>
 
